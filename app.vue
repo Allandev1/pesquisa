@@ -5,7 +5,7 @@
     class="mx-auto mt-8"
     style="width: 80px; height: 113px"
   /> -->
-  <UCard class="max-w-lg mx-auto my-8" v-if="etapa1">
+  <UCard class="max-w-lg my-8" v-if="etapa1">
     <template #header>
       <h2 class="text-center mb-4 text-2xl">Pesquisa de opinião</h2>
       <p class="text-base">
@@ -46,7 +46,7 @@
     </UForm>
   </UCard>
 
-  <UCard v-else class="max-w-lg mx-auto my-8">
+  <UCard v-else-if="!enviado" class="max-w-lg my-8">
     <UForm
       class="space-y-4"
       :schema="formRules2"
@@ -122,12 +122,34 @@
       <UButton @click="etapa1 = true">Voltar</UButton>
     </template>
   </UCard>
+
+  <UCard v-else class="max-w-lg my-8">
+    <template #header>
+      <img
+        alt="CSPFA Logo"
+        src="/logo.png"
+        class="mx-auto"
+        style="width: 80px; height: 113px"
+      />
+    </template>
+    <h2 class="text-center mb-4 text-4xl">Obrigado!</h2>
+    <p class="text-base">
+      Você contribuiu para a melhoria do atendimento desta Comissão.
+    </p>
+    <template #footer>
+      <!-- colocar copyright -->
+      <p class="text-center text-sm">
+        &copy; 2021 Comissão de Seleção da Guarnição de Curitiba
+      </p>
+    </template>
+  </UCard>
 </template>
 
 <script setup>
 import { z } from "zod";
 
 const etapa1 = ref(true);
+const enviado = ref(false);
 const formSubmitLoading = ref(false);
 const url =
   "https://script.google.com/macros/s/AKfycbypNjqO8fhIRgmIp9f0rQJ7DvzON4DHSk71PDTHvUT5qLHIM2uklehxEdRZf_8li9wa/exec";
@@ -189,6 +211,7 @@ const handleSubmit = async () => {
         "Content-Type": "text/plain;charset=utf-8",
       },
     });
+    enviado.value = true;
   } catch (error) {
     console.error(error);
   } finally {
