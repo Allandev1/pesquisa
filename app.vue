@@ -114,7 +114,9 @@
         <UTextarea v-model="formData.comentarios" />
       </UFormGroup>
 
-      <UButton block size="md" type="submit">Enviar</UButton>
+      <UButton block size="md" type="submit" :loading="formSubmitLoading"
+        >Enviar</UButton
+      >
     </UForm>
     <template #footer>
       <UButton @click="etapa1 = true">Voltar</UButton>
@@ -126,6 +128,9 @@
 import { z } from "zod";
 
 const etapa1 = ref(true);
+const formSubmitLoading = ref(false);
+const url =
+  "https://script.google.com/macros/s/AKfycbypNjqO8fhIRgmIp9f0rQJ7DvzON4DHSk71PDTHvUT5qLHIM2uklehxEdRZf_8li9wa/exec";
 
 const formData = reactive({
   status: "",
@@ -170,31 +175,25 @@ const formRules2 = z.object({
   comentarios: z.string(),
 });
 
-const url =
-  "https://script.google.com/macros/s/AKfycbypNjqO8fhIRgmIp9f0rQJ7DvzON4DHSk71PDTHvUT5qLHIM2uklehxEdRZf_8li9wa/exec";
-
 const handleSubmit = async () => {
   if (etapa1.value) {
     etapa1.value = false;
     return;
   }
-  console.log(formData);
-  $fetch(url, {
-    method: "POST",
-    body: JSON.stringify(formData),
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-      alert("Pesquisa enviada com sucesso!");
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert("Erro ao enviar pesquisa!");
+  formSubmitLoading.value = true;
+  try {
+    await $fetch(url, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
     });
+  } catch (error) {
+    console.error(error);
+  } finally {
+    formSubmitLoading.value = false;
+  }
 };
 </script>
 
