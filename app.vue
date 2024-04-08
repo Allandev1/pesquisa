@@ -1,0 +1,205 @@
+<template>
+  <!-- <img
+    alt="CSPFA Logo"
+    src="/logo.png"
+    class="mx-auto mt-8"
+    style="width: 80px; height: 113px"
+  /> -->
+  <UCard class="max-w-lg mx-auto my-8" v-if="etapa1">
+    <template #header>
+      <h2 class="text-center mb-4 text-2xl">Pesquisa de opinião</h2>
+      <p class="text-base">
+        Tem a finalidade de aperfeiçoar os trabalhos da Comissão de Seleção e
+        permitir o acompanhamento por parte do Comando da 5ª Região Militar.
+        Solicito a colaboração para responder a pesquisa de satisfação a
+        respeito das instalações, recepção e desenvolvimento dos trabalhos desta
+        Comissão. Esta pesquisa terá caráter anônimo.
+      </p>
+    </template>
+
+    <UForm
+      class="space-y-4"
+      :schema="formRules1"
+      :state="formData"
+      @submit="handleSubmit"
+    >
+      <UFormGroup
+        name="status"
+        label="Você foi Apto ou Dispensado do Serviço Militar?"
+        required
+      >
+        <URadioGroup v-model="formData.status" :options="statusOptions" />
+      </UFormGroup>
+
+      <UFormGroup
+        name="voluntario"
+        label="Você é ou era voluntário para servir?"
+        required
+      >
+        <URadioGroup
+          v-model="formData.voluntario"
+          :options="voluntarioOptions"
+        />
+      </UFormGroup>
+
+      <UButton block size="md" type="submit">Próximo</UButton>
+    </UForm>
+  </UCard>
+
+  <UCard v-else class="max-w-lg mx-auto my-8">
+    <UForm
+      class="space-y-4"
+      :schema="formRules2"
+      :state="formData"
+      @submit="handleSubmit"
+    >
+      <UFormGroup
+        name="instalacoes"
+        label="Como o Sr considera as instalações da Comissão de Seleção?"
+        required
+      >
+        <URadioGroup
+          v-model="formData.instalacoes"
+          :options="avaliacaoOptions"
+        />
+      </UFormGroup>
+
+      <UFormGroup
+        name="recepcao"
+        label="Como o Sr considera o trabalho da Recepção?"
+        required
+      >
+        <URadioGroup v-model="formData.recepcao" :options="avaliacaoOptions" />
+      </UFormGroup>
+
+      <UFormGroup
+        name="saude"
+        label="Como o Sr considera o trabalho da Inspeção de Saúde?"
+        required
+      >
+        <URadioGroup v-model="formData.saude" :options="avaliacaoOptions" />
+      </UFormGroup>
+
+      <UFormGroup
+        name="limpeza"
+        label="Como o Sr considera a limpeza do ambiente (instalações) onde foi realizada a Seleção?"
+        required
+      >
+        <URadioGroup v-model="formData.limpeza" :options="avaliacaoOptions" />
+      </UFormGroup>
+
+      <UFormGroup
+        name="fluxo"
+        label="Como o Sr avalia o fluxo nos Postos de Seleção que passou hoje?"
+        required
+      >
+        <URadioGroup v-model="formData.fluxo" :options="avaliacaoOptions" />
+      </UFormGroup>
+
+      <UFormGroup
+        name="tratamento"
+        label="Como o Sr avalia o tratamento dispensado durante os trabalhos da Comissão de Seleção?"
+        required
+      >
+        <URadioGroup
+          v-model="formData.tratamento"
+          :options="avaliacaoOptions"
+        />
+      </UFormGroup>
+
+      <UFormGroup
+        name="comentarios"
+        label="Expresse a sua opinião sobre quaisquer aspectos julgados pertinentes acerca da Comissão de Seleção da Guarnição de Curitiba."
+      >
+        <UTextarea v-model="formData.comentarios" />
+      </UFormGroup>
+
+      <UButton block size="md" type="submit">Enviar</UButton>
+    </UForm>
+    <template #footer>
+      <UButton @click="etapa1 = true">Voltar</UButton>
+    </template>
+  </UCard>
+</template>
+
+<script setup>
+import { z } from "zod";
+
+const etapa1 = ref(true);
+
+const formData = reactive({
+  status: "",
+  voluntario: "",
+  instalacoes: "",
+  recepcao: "",
+  saude: "",
+  limpeza: "",
+  fluxo: "",
+  tratamento: "",
+  comentarios: "",
+});
+
+const statusOptions = ref([
+  { label: "Apto", key: "Apto" },
+  { label: "Dispensado", key: "Dispensado" },
+]);
+
+const voluntarioOptions = ref([
+  { label: "Sim", key: "Sim" },
+  { label: "Não", key: "Não" },
+]);
+
+const avaliacaoOptions = ref([
+  { label: "Excelente", key: "Excelente" },
+  { label: "Bom", key: "Bom" },
+  { label: "Ruim", key: "Ruim" },
+]);
+
+const formRules1 = z.object({
+  status: z.string().min(1, { message: "Campo obrigatório" }),
+  voluntario: z.string().min(1, { message: "Campo obrigatório" }),
+});
+
+const formRules2 = z.object({
+  instalacoes: z.string().min(1, { message: "Campo obrigatório" }),
+  recepcao: z.string().min(1, { message: "Campo obrigatório" }),
+  saude: z.string().min(1, { message: "Campo obrigatório" }),
+  limpeza: z.string().min(1, { message: "Campo obrigatório" }),
+  fluxo: z.string().min(1, { message: "Campo obrigatório" }),
+  tratamento: z.string().min(1, { message: "Campo obrigatório" }),
+  comentarios: z.string(),
+});
+
+const url =
+  "https://script.google.com/macros/s/AKfycbypNjqO8fhIRgmIp9f0rQJ7DvzON4DHSk71PDTHvUT5qLHIM2uklehxEdRZf_8li9wa/exec";
+
+const handleSubmit = async () => {
+  if (etapa1.value) {
+    etapa1.value = false;
+    return;
+  }
+  console.log(formData);
+  $fetch(url, {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+      alert("Pesquisa enviada com sucesso!");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Erro ao enviar pesquisa!");
+    });
+};
+</script>
+
+<style scoped>
+header {
+  background: #3498db;
+}
+</style>
