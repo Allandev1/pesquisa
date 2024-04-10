@@ -1,25 +1,26 @@
 <template>
   <main class="container max-w-2xl p-4">
-    <!-- <img
-    alt="CSPFA Logo"
-    src="/logo.png"
-    class="mx-auto mt-8"
-    style="width: 80px; height: 113px"
-  /> -->
     <UCard v-if="etapa1">
       <template #header>
-        <h2 class="text-center mb-4 text-2xl font-bold">Pesquisa de opinião</h2>
-        <p class="text-lg font-light">
-          Tem a finalidade de aperfeiçoar os trabalhos da Comissão de Seleção e
-          permitir o acompanhamento por parte do Comando da 5ª Região Militar.
-          Solicito a colaboração para responder a pesquisa de satisfação a
-          respeito das instalações, recepção e desenvolvimento dos trabalhos
-          desta Comissão. Esta pesquisa terá
-          <span class="font-bold">caráter anônimo</span>.
+        <img
+          alt="CSPFA Logo"
+          src="/logo.png"
+          class="mx-auto"
+          style="width: 80px; height: 113px"
+        />
+        <h2 class="text-center text-2xl font-bold my-2">Pesquisa de opinião</h2>
+        <p class="text-lg text-justify">
+          Tem a finalidade de aperfeiçoar os trabalhos da
+          <span class="font-semibold">Comissão de Seleção</span> e permitir o
+          acompanhamento por parte do
+          <span class="italic">Comando da 5ª Região Militar</span>. Solicito a
+          colaboração para responder a pesquisa de satisfação a respeito das
+          instalações, recepção e desenvolvimento dos trabalhos desta Comissão.
+          Esta pesquisa terá <span class="font-semibold">caráter anônimo</span>.
         </p>
       </template>
-
       <UForm
+        ref="formSubmit"
         class="space-y-4"
         :schema="formRules1"
         :state="formData"
@@ -44,11 +45,22 @@
           />
         </UFormGroup>
 
-        <UButton block size="xl" type="submit">Próximo</UButton>
+        <UButton block size="xl" type="submit" :loading="formSubmitLoading">
+          Continuar
+        </UButton>
       </UForm>
     </UCard>
 
     <UCard v-else-if="!enviado">
+      <template #header>
+        <UButton
+          @click="etapa1 = true"
+          variant="link"
+          icon="i-heroicons-arrow-left"
+        >
+          Voltar
+        </UButton>
+      </template>
       <UForm
         class="space-y-4"
         :schema="formRules2"
@@ -115,20 +127,15 @@
         <UFormGroup
           name="comentarios"
           label="Envie-nos uma mensagem"
-          description="Expresse a sua opinião sobre quaisquer aspectos julgados pertinentes acerca da Comissão de Seleção da Guarnição de Curitiba."
+          help="Expresse a sua opinião sobre quaisquer aspectos julgados pertinentes acerca da Comissão de Seleção da Guarnição de Curitiba."
         >
-          <UTextarea v-model="formData.comentarios" />
+          <UTextarea v-model="formData.comentarios" size="xl" />
         </UFormGroup>
 
-        <UButton block size="xl" type="submit" :loading="formSubmitLoading"
-          >Enviar</UButton
-        >
-      </UForm>
-      <template #footer>
-        <UButton @click="etapa1 = true" size="xl" variant="link">
-          Voltar
+        <UButton block size="xl" type="submit" :loading="formSubmitLoading">
+          Enviar
         </UButton>
-      </template>
+      </UForm>
     </UCard>
 
     <UCard v-else>
@@ -139,17 +146,14 @@
           class="mx-auto"
           style="width: 80px; height: 113px"
         />
-      </template>
-      <h2 class="text-center mb-4 text-4xl">Obrigado!</h2>
-      <p class="text-base">
-        Você contribuiu para a melhoria do atendimento desta Comissão.
-      </p>
-      <template #footer>
-        <!-- colocar copyright -->
-        <p class="text-center text-sm">
-          &copy; 2021 Comissão de Seleção da Guarnição de Curitiba
+        <h2 class="text-center font-bold my-2 text-4xl">Obrigado!</h2>
+        <p class="text-lg text-center">
+          Você contribuiu para a melhoria do atendimento desta Comissão.
         </p>
       </template>
+      <UButton @click="resetaForm" block size="xl">
+        Enviar outra avaliação
+      </UButton>
     </UCard>
   </main>
 </template>
@@ -206,6 +210,14 @@ const formRules2 = z.object({
   comentarios: z.string(),
 });
 
+const resetaForm = () => {
+  Object.keys(formData).forEach((key) => {
+    formData[key] = "";
+  });
+  etapa1.value = true;
+  enviado.value = false;
+};
+
 const handleSubmit = async () => {
   if (etapa1.value) {
     etapa1.value = false;
@@ -228,9 +240,3 @@ const handleSubmit = async () => {
   }
 };
 </script>
-
-<style scoped>
-header {
-  background: #3498db;
-}
-</style>
