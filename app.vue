@@ -7,13 +7,14 @@
   /> -->
   <UCard class="max-w-lg my-8" v-if="etapa1">
     <template #header>
-      <h2 class="text-center mb-4 text-2xl">Pesquisa de opinião</h2>
-      <p class="text-base">
+      <h2 class="text-center mb-4 text-2xl font-bold">Pesquisa de opinião</h2>
+      <p class="text-lg font-light">
         Tem a finalidade de aperfeiçoar os trabalhos da Comissão de Seleção e
         permitir o acompanhamento por parte do Comando da 5ª Região Militar.
         Solicito a colaboração para responder a pesquisa de satisfação a
         respeito das instalações, recepção e desenvolvimento dos trabalhos desta
-        Comissão. Esta pesquisa terá caráter anônimo.
+        Comissão. Esta pesquisa terá
+        <span class="font-bold">caráter anônimo</span>.
       </p>
     </template>
 
@@ -28,7 +29,11 @@
         label="Você foi Apto ou Dispensado do Serviço Militar?"
         required
       >
-        <URadioGroup v-model="formData.status" :options="statusOptions" />
+        <URadioGroup
+          v-model="formData.status"
+          :options="statusOptions"
+          :uiRadio="{ base: 'text-4xl' }"
+        />
       </UFormGroup>
 
       <UFormGroup
