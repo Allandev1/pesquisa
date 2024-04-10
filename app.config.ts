@@ -5,11 +5,11 @@ export default defineAppConfig({
     gray: "neutral",
     formGroup: {
       label: {
-        base: "text-lg",
+        base: "text-lg font-semibold",
       },
     },
     radio: {
-      label: "text-lg",
+      label: "text-lg pb-1",
       wrapper: "flex items-center",
     },
   },
