@@ -1,16 +1,16 @@
-import { UFormGroup } from "./.nuxt/components.d";
 export default defineAppConfig({
   ui: {
     strategy: "override",
     primary: "blue",
-    gray: "cool",
+    gray: "neutral",
     formGroup: {
       label: {
         base: "text-lg",
       },
     },
     radio: {
-      base: "text-lg",
+      label: "text-lg",
+      wrapper: "flex items-center",
     },
   },
 });

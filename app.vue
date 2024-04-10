@@ -5,7 +5,7 @@
     class="mx-auto mt-8"
     style="width: 80px; height: 113px"
   /> -->
-  <UCard class="max-w-lg my-8" v-if="etapa1">
+  <UCard class="max-w-xl my-8" v-if="etapa1">
     <template #header>
       <h2 class="text-center mb-4 text-2xl font-bold">Pesquisa de opinião</h2>
       <p class="text-lg font-light">
@@ -51,7 +51,7 @@
     </UForm>
   </UCard>
 
-  <UCard v-else-if="!enviado" class="max-w-lg my-8">
+  <UCard v-else-if="!enviado" class="max-w-xl my-8">
     <UForm
       class="space-y-4"
       :schema="formRules2"
