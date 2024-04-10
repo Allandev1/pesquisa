@@ -5,7 +5,7 @@ export default defineAppConfig({
     gray: "neutral",
     formGroup: {
       label: {
-        base: "text-lg font-semibold",
+        base: "text-lg font-bold",
       },
     },
     radio: {

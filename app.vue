@@ -1,5 +1,5 @@
 <template>
-  <main class="container max-w-2xl my-8 px-2">
+  <main class="container max-w-2xl p-4">
     <!-- <img
     alt="CSPFA Logo"
     src="/logo.png"
@@ -114,7 +114,8 @@
 
         <UFormGroup
           name="comentarios"
-          label="Expresse a sua opinião sobre quaisquer aspectos julgados pertinentes acerca da Comissão de Seleção da Guarnição de Curitiba."
+          label="Envie-nos uma mensagem"
+          description="Expresse a sua opinião sobre quaisquer aspectos julgados pertinentes acerca da Comissão de Seleção da Guarnição de Curitiba."
         >
           <UTextarea v-model="formData.comentarios" />
         </UFormGroup>
