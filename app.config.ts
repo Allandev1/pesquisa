@@ -1,7 +1,7 @@
 export default defineAppConfig({
   ui: {
     strategy: "override",
-    primary: "blue",
+    primary: "green",
     gray: "neutral",
     formGroup: {
       label: {
@@ -11,6 +11,9 @@ export default defineAppConfig({
     radio: {
       label: "text-lg pb-1",
       wrapper: "flex items-center",
+    },
+    button: {
+      rounded: "rounded-full",
     },
   },
 });

@@ -1,5 +1,5 @@
 <template>
-  <main class="container max-w-2xl my-8">
+  <main class="container max-w-2xl my-8 px-2">
     <!-- <img
     alt="CSPFA Logo"
     src="/logo.png"
@@ -30,11 +30,7 @@
           label="Você foi Apto ou Dispensado do Serviço Militar?"
           required
         >
-          <URadioGroup
-            v-model="formData.status"
-            :options="statusOptions"
-            :uiRadio="{ base: 'text-4xl' }"
-          />
+          <URadioGroup v-model="formData.status" :options="statusOptions" />
         </UFormGroup>
 
         <UFormGroup
@@ -128,7 +124,9 @@
         >
       </UForm>
       <template #footer>
-        <UButton @click="etapa1 = true">Voltar</UButton>
+        <UButton @click="etapa1 = true" size="xl" variant="link">
+          Voltar
+        </UButton>
       </template>
     </UCard>
 
