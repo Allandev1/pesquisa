@@ -7,9 +7,9 @@ export default defineAppConfig({
       rounded: "rounded-full",
     },
     card: {
-      background: "bg-white dark:bg-gray-900",
+      background: "sm:bg-white sm:dark:bg-gray-900",
       rounded: "rounded-sm",
-      ring: "ring-1 ring-gray-200 dark:ring-gray-800",
+      ring: "sm:ring-1 ring-gray-200 dark:ring-gray-800",
     },
     formGroup: {
       label: {

@@ -11,6 +11,10 @@ export default defineNuxtConfig({
       ],
     },
   },
+  colorMode: {
+    preference: "light",
+    fallback: "light",
+  },
   modules: ["@nuxt/ui"],
   css: ["~/assets/css/main.css"],
 });

@@ -129,7 +129,7 @@
           label="Envie-nos uma mensagem"
           help="Expresse a sua opinião sobre quaisquer aspectos julgados pertinentes acerca da Comissão de Seleção da Guarnição de Curitiba."
         >
-          <UTextarea v-model="formData.comentarios" size="xl" />
+          <UTextarea v-model="formData.comentarios" size="xlf" />
         </UFormGroup>
 
         <UButton block size="xl" type="submit" :loading="formSubmitLoading">
@@ -165,8 +165,7 @@ const etapa1 = ref(true);
 const enviado = ref(false);
 const formSubmitLoading = ref(false);
 const url =
-  "https://script.google.com/macros/s/AKfycbypNjqO8fhIRgmIp9f0rQJ7DvzON4DHSk71PDTHvUT5qLHIM2uklehxEdRZf_8li9wa/exec";
-
+  "https://script.google.com/macros/s/AKfycbxo3w_FgKy3mOyKqzwYh_MlUDWL16nxQLjhS7j7yr0G_RO7Erxw-7BEr65xLiX6trCn/exec";
 const formData = reactive({
   status: "",
   voluntario: "",
