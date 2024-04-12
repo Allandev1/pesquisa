@@ -161,11 +161,15 @@
 <script setup>
 import { z } from "zod";
 
+definePageMeta({
+  colorMode: "ligth",
+});
+
+const config = useRuntimeConfig();
+
 const etapa1 = ref(true);
 const enviado = ref(false);
 const formSubmitLoading = ref(false);
-const url =
-  "https://script.google.com/macros/s/AKfycbz3phyC7H9FTNhoqyfdnhckqR65rBF_dtySEYOCRjcys87k2IE-Kh1-X72br6wUhpEF/exec";
 const formData = reactive({
   status: "",
   voluntario: "",
@@ -224,7 +228,7 @@ const handleSubmit = async () => {
   }
   formSubmitLoading.value = true;
   try {
-    await $fetch(url, {
+    await $fetch(config.public.scriptURL, {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {

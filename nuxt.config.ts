@@ -11,10 +11,16 @@ export default defineNuxtConfig({
       ],
     },
   },
-  colorMode: {
-    preference: "light",
-    fallback: "light",
-  },
   modules: ["@nuxt/ui"],
   css: ["~/assets/css/main.css"],
+  runtimeConfig: {
+    public: {
+      scriptURL: process.env.GS_SCRIPT_URL,
+    },
+  },
+  colorMode: {
+    preference: "system",
+    fallback: "light",
+    classSuffix: "",
+  },
 });
