@@ -138,7 +138,7 @@
       </UForm>
     </UCard>
 
-    <UCard v-else>
+    <UCard>
       <template #header>
         <img
           alt="CSPFA Logo"
@@ -243,3 +243,9 @@ const handleSubmit = async () => {
   }
 };
 </script>
+
+<style scoped>
+body {
+  background-color: #f5f7f9;
+}
+</style>
