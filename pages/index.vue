@@ -3,10 +3,12 @@
     <UCard v-if="etapa1">
       <template #header>
         <img
+          id="emoticon"
           alt="CSPFA Logo"
-          src="/logo.png"
+          src="/Mouth.png"
           class="mx-auto"
-          style="width: 80px; height: 113px"
+          style="width: 64px; height: 64px"
+          :class="{ active: formData.status == 'Apto' }"
         />
         <h2 class="text-center text-2xl font-bold my-2">Pesquisa de opinião</h2>
         <p class="text-lg text-justify">
@@ -138,7 +140,7 @@
       </UForm>
     </UCard>
 
-    <UCard>
+    <UCard v-else>
       <template #header>
         <img
           alt="CSPFA Logo"
@@ -247,5 +249,27 @@ const handleSubmit = async () => {
 <style scoped>
 body {
   background-color: #f5f7f9;
+}
+
+#emoticon {
+  filter: grayscale(100%);
+  transition: filter 0.5s;
+}
+
+#emoticon.active {
+  filter: none;
+  animation: identifier 1s forwards;
+}
+
+@keyframes identifier {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>
