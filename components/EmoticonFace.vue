@@ -1,5 +1,9 @@
 <template>
-  <div class="emoticon-button border" :class="classObject" @click="handleClick">
+  <div
+    class="emoticon-button border rounded-sm"
+    :class="classObject"
+    @click="handleClick"
+  >
     <img :alt="`${emoticonFace} emoticon`" :src="`/${emoticonFace}.png`" />
     <label class="text-center">
       {{ emoticonFace }}
@@ -52,8 +56,8 @@ const handleClick = () => {
     pointer-events: none;
 
     @media (max-width: 768px) {
-      width: 32px;
-      height: 32px;
+      width: 48px;
+      height: 48px;
     }
   }
 
@@ -64,7 +68,7 @@ const handleClick = () => {
     pointer-events: none;
 
     @media (max-width: 768px) {
-      font-size: 0.75rem;
+      font-size: 0.875rem;
     }
   }
 
