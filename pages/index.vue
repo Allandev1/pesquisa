@@ -3,12 +3,10 @@
     <UCard v-if="etapa1">
       <template #header>
         <img
-          id="emoticon"
           alt="CSPFA Logo"
-          src="/Mouth.png"
+          src="/logo.png"
           class="mx-auto"
-          style="width: 64px; height: 64px"
-          :class="{ active: formData.status == 'Apto' }"
+          style="width: 87px; height: 113px"
         />
         <h2 class="text-center text-2xl font-bold my-2">Pesquisa de opinião</h2>
         <p class="text-lg text-justify">
@@ -75,8 +73,13 @@
           required
         >
           <URadioGroup
+            class="hidden"
             v-model="formData.instalacoes"
             :options="avaliacaoOptions"
+          />
+          <EmoticonSection
+            :formCondition="formData.instalacoes"
+            @update:formCondition="formData.instalacoes = $event"
           />
         </UFormGroup>
 
@@ -86,8 +89,13 @@
           required
         >
           <URadioGroup
+            class="hidden"
             v-model="formData.recepcao"
             :options="avaliacaoOptions"
+          />
+          <EmoticonSection
+            :formCondition="formData.recepcao"
+            @update:formCondition="formData.recepcao = $event"
           />
         </UFormGroup>
 
@@ -96,7 +104,15 @@
           label="Como o Sr considera o trabalho da Inspeção de Saúde?"
           required
         >
-          <URadioGroup v-model="formData.saude" :options="avaliacaoOptions" />
+          <URadioGroup
+            class="hidden"
+            v-model="formData.saude"
+            :options="avaliacaoOptions"
+          />
+          <EmoticonSection
+            :formCondition="formData.saude"
+            @update:formCondition="formData.saude = $event"
+          />
         </UFormGroup>
 
         <UFormGroup
@@ -104,7 +120,15 @@
           label="Como o Sr considera a limpeza do ambiente (instalações) onde foi realizada a Seleção?"
           required
         >
-          <URadioGroup v-model="formData.limpeza" :options="avaliacaoOptions" />
+          <URadioGroup
+            class="hidden"
+            v-model="formData.limpeza"
+            :options="avaliacaoOptions"
+          />
+          <EmoticonSection
+            :formCondition="formData.limpeza"
+            @update:formCondition="formData.limpeza = $event"
+          />
         </UFormGroup>
 
         <UFormGroup
@@ -112,7 +136,15 @@
           label="Como o Sr avalia o fluxo nos Postos de Seleção que passou hoje?"
           required
         >
-          <URadioGroup v-model="formData.fluxo" :options="avaliacaoOptions" />
+          <URadioGroup
+            class="hidden"
+            v-model="formData.fluxo"
+            :options="avaliacaoOptions"
+          />
+          <EmoticonSection
+            :formCondition="formData.fluxo"
+            @update:formCondition="formData.fluxo = $event"
+          />
         </UFormGroup>
 
         <UFormGroup
@@ -121,8 +153,13 @@
           required
         >
           <URadioGroup
+            class="hidden"
             v-model="formData.tratamento"
             :options="avaliacaoOptions"
+          />
+          <EmoticonSection
+            :formCondition="formData.tratamento"
+            @update:formCondition="formData.tratamento = $event"
           />
         </UFormGroup>
 
@@ -168,7 +205,6 @@ definePageMeta({
 });
 
 const config = useRuntimeConfig();
-
 const etapa1 = ref(true);
 const enviado = ref(false);
 const formSubmitLoading = ref(false);
@@ -249,27 +285,5 @@ const handleSubmit = async () => {
 <style scoped>
 body {
   background-color: #f5f7f9;
-}
-
-#emoticon {
-  filter: grayscale(100%);
-  transition: filter 0.5s;
-}
-
-#emoticon.active {
-  filter: none;
-  animation: identifier 1s forwards;
-}
-
-@keyframes identifier {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 </style>
