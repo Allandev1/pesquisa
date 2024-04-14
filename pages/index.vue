@@ -69,7 +69,7 @@
       >
         <UFormGroup
           name="instalacoes"
-          label="Como o Sr considera as instalações da Comissão de Seleção?"
+          label="Instalações da Comissão de Seleção:"
           required
         >
           <URadioGroup
@@ -83,11 +83,7 @@
           />
         </UFormGroup>
 
-        <UFormGroup
-          name="recepcao"
-          label="Como o Sr considera o trabalho da Recepção?"
-          required
-        >
+        <UFormGroup name="recepcao" label="Trabalho da Recepção:" required>
           <URadioGroup
             class="hidden"
             v-model="formData.recepcao"
@@ -101,7 +97,7 @@
 
         <UFormGroup
           name="saude"
-          label="Como o Sr considera o trabalho da Inspeção de Saúde?"
+          label="Trabalho da Inspeção de Saúde:"
           required
         >
           <URadioGroup
@@ -117,7 +113,7 @@
 
         <UFormGroup
           name="limpeza"
-          label="Como o Sr considera a limpeza do ambiente (instalações) onde foi realizada a Seleção?"
+          label="Limpeza do ambiente (instalações) onde foi realizada a Seleção:"
           required
         >
           <URadioGroup
@@ -133,7 +129,7 @@
 
         <UFormGroup
           name="fluxo"
-          label="Como o Sr avalia o fluxo nos Postos de Seleção que passou hoje?"
+          label="Fluxo nos Postos de Seleção que passou hoje:"
           required
         >
           <URadioGroup
@@ -149,7 +145,7 @@
 
         <UFormGroup
           name="tratamento"
-          label="Como o Sr avalia o tratamento dispensado durante os trabalhos da Comissão de Seleção?"
+          label="Tratamento dispensado durante os trabalhos da Comissão de Seleção:"
           required
         >
           <URadioGroup
