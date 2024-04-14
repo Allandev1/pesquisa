@@ -253,8 +253,6 @@
 import { z } from "zod";
 
 const colorMode = useColorMode();
-colorMode.preference = "light";
-
 const config = useRuntimeConfig();
 const etapa1 = ref(true);
 const enviado = ref(false);
