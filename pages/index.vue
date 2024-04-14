@@ -1,5 +1,5 @@
 <template>
-  <main class="container max-w-2xl p-3">
+  <main class="container max-w-2xl px-3 py-5">
     <UCard v-if="etapa1">
       <template #header>
         <div class="flex justify-end">
@@ -28,7 +28,7 @@
         style="width: 87px; height: 113px"
       />
       <h2 class="text-center text-2xl font-bold my-2">Pesquisa de opinião</h2>
-      <p class="text-lg text-justify">
+      <p class="text-lg">
         Tem a finalidade de aperfeiçoar os trabalhos da
         <span class="font-semibold">Comissão de Seleção</span> e permitir o
         acompanhamento por parte do
