@@ -132,7 +132,7 @@ body {
 }
 
 .emoticon-button label {
-  @apply text-gray-300 dark:text-gray-700;
+  @apply text-gray-400;
 }
 
 .excelente.active {
