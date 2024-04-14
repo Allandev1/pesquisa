@@ -2,7 +2,7 @@ export default defineAppConfig({
   ui: {
     strategy: "override",
     primary: "exercito",
-    gray: "neutral",
+    gray: "zinc",
     button: {
       rounded: "rounded-full",
     },

@@ -46,13 +46,13 @@ const handleClick = () => {
   justify-content: center;
   padding: 0.5rem;
   cursor: pointer;
-  filter: grayscale(1);
 
   img {
     margin: 0 auto;
     width: 64px;
     height: 64px;
     pointer-events: none;
+    filter: grayscale(1);
 
     @media (max-width: 768px) {
       width: 48px;

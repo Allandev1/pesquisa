@@ -2,64 +2,101 @@
   <main class="container max-w-2xl p-3">
     <UCard v-if="etapa1">
       <template #header>
-        <img
-          alt="CSPFA Logo"
-          src="/logo.png"
-          class="mx-auto"
-          style="width: 87px; height: 113px"
-        />
-        <h2 class="text-center text-2xl font-bold my-2">Pesquisa de opinião</h2>
-        <p class="text-lg text-justify">
-          Tem a finalidade de aperfeiçoar os trabalhos da
-          <span class="font-semibold">Comissão de Seleção</span> e permitir o
-          acompanhamento por parte do
-          <span class="italic">Comando da 5ª Região Militar</span>. Solicito a
-          colaboração para responder a pesquisa de satisfação a respeito das
-          instalações, recepção e desenvolvimento dos trabalhos desta Comissão.
-          Esta pesquisa terá <span class="font-semibold">caráter anônimo</span>.
-        </p>
-      </template>
-      <UForm
-        ref="formSubmit"
-        class="space-y-4"
-        :schema="formRules1"
-        :state="formData"
-        @submit="handleSubmit"
-      >
-        <UFormGroup
-          name="status"
-          label="Você foi Apto ou Dispensado do Serviço Militar?"
-          required
-        >
-          <URadioGroup v-model="formData.status" :options="statusOptions" />
-        </UFormGroup>
-
-        <UFormGroup
-          name="voluntario"
-          label="Você é ou era voluntário para servir?"
-          required
-        >
-          <URadioGroup
-            v-model="formData.voluntario"
-            :options="voluntarioOptions"
+        <div class="flex justify-end">
+          <UButton
+            :icon="
+              colorMode.preference === 'light'
+                ? 'i-heroicons-sun'
+                : 'i-heroicons-moon'
+            "
+            @click="
+              colorMode.preference =
+                colorMode.preference === 'light' ? 'dark' : 'light'
+            "
+            size="sm"
+            color="primary"
+            square
+            variant="ghost"
           />
-        </UFormGroup>
+        </div>
+      </template>
 
-        <UButton block size="xl" type="submit" :loading="formSubmitLoading">
-          Continuar
-        </UButton>
-      </UForm>
+      <img
+        alt="CSPFA Logo"
+        src="/logo.png"
+        class="mx-auto"
+        style="width: 87px; height: 113px"
+      />
+      <h2 class="text-center text-2xl font-bold my-2">Pesquisa de opinião</h2>
+      <p class="text-lg text-justify">
+        Tem a finalidade de aperfeiçoar os trabalhos da
+        <span class="font-semibold">Comissão de Seleção</span> e permitir o
+        acompanhamento por parte do
+        <span class="italic">Comando da 5ª Região Militar</span>. Solicito a
+        colaboração para responder a pesquisa de satisfação a respeito das
+        instalações, recepção e desenvolvimento dos trabalhos desta Comissão.
+        Esta pesquisa terá <span class="font-semibold">caráter anônimo</span>.
+      </p>
+      <template #footer>
+        <UForm
+          ref="formSubmit"
+          class="space-y-4"
+          :schema="formRules1"
+          :state="formData"
+          @submit="handleSubmit"
+        >
+          <UFormGroup
+            name="status"
+            label="Você foi Apto ou Dispensado do Serviço Militar?"
+            required
+          >
+            <URadioGroup v-model="formData.status" :options="statusOptions" />
+          </UFormGroup>
+
+          <UFormGroup
+            name="voluntario"
+            label="Você é ou era voluntário para servir?"
+            required
+          >
+            <URadioGroup
+              v-model="formData.voluntario"
+              :options="voluntarioOptions"
+            />
+          </UFormGroup>
+
+          <UButton block size="xl" type="submit" :loading="formSubmitLoading">
+            Continuar
+          </UButton>
+        </UForm>
+      </template>
     </UCard>
 
     <UCard v-else-if="!enviado">
       <template #header>
-        <UButton
-          @click="etapa1 = true"
-          variant="link"
-          icon="i-heroicons-arrow-left"
-        >
-          Voltar
-        </UButton>
+        <div class="flex justify-between">
+          <UButton
+            @click="etapa1 = true"
+            variant="link"
+            icon="i-heroicons-arrow-left"
+          >
+            Voltar
+          </UButton>
+          <UButton
+            :icon="
+              colorMode.preference === 'light'
+                ? 'i-heroicons-sun'
+                : 'i-heroicons-moon'
+            "
+            @click="
+              colorMode.preference =
+                colorMode.preference === 'light' ? 'dark' : 'light'
+            "
+            size="sm"
+            color="primary"
+            square
+            variant="ghost"
+          />
+        </div>
       </template>
       <UForm
         class="space-y-4"
@@ -175,20 +212,39 @@
 
     <UCard v-else>
       <template #header>
-        <img
-          alt="CSPFA Logo"
-          src="/logo.png"
-          class="mx-auto"
-          style="width: 80px; height: 113px"
-        />
-        <h2 class="text-center font-bold my-2 text-4xl">Obrigado!</h2>
-        <p class="text-lg text-center">
-          Você contribuiu para a melhoria do atendimento desta Comissão.
-        </p>
+        <div class="flex justify-end">
+          <UButton
+            :icon="
+              colorMode.preference === 'light'
+                ? 'i-heroicons-sun'
+                : 'i-heroicons-moon'
+            "
+            @click="
+              colorMode.preference =
+                colorMode.preference === 'light' ? 'dark' : 'light'
+            "
+            size="sm"
+            color="primary"
+            square
+            variant="ghost"
+          />
+        </div>
       </template>
-      <UButton @click="resetaForm" block size="xl">
-        Enviar outra avaliação
-      </UButton>
+      <img
+        alt="CSPFA Logo"
+        src="/logo.png"
+        class="mx-auto"
+        style="width: 80px; height: 113px"
+      />
+      <h2 class="text-center font-bold my-2 text-4xl">Obrigado!</h2>
+      <p class="text-lg text-center mb-5">
+        Você contribuiu para a melhoria do atendimento desta Comissão.
+      </p>
+      <template #footer>
+        <UButton @click="resetaForm" block size="xl">
+          Enviar outra avaliação
+        </UButton>
+      </template>
     </UCard>
   </main>
 </template>
@@ -196,9 +252,8 @@
 <script setup>
 import { z } from "zod";
 
-// definePageMeta({
-//   colorMode: "ligth",
-// });
+const colorMode = useColorMode();
+colorMode.preference = "light";
 
 const config = useRuntimeConfig();
 const etapa1 = ref(true);
