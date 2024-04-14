@@ -1,6 +1,6 @@
 <template>
   <div
-    class="emoticon-button border rounded-sm"
+    class="emoticon-button rounded-md shadow-sm ring-1"
     :class="classObject"
     @click="handleClick"
   >
@@ -46,7 +46,6 @@ const handleClick = () => {
   justify-content: center;
   padding: 0.5rem;
   cursor: pointer;
-  border-color: #d9d9d9;
   filter: grayscale(1);
 
   img {
@@ -62,9 +61,8 @@ const handleClick = () => {
   }
 
   label {
-    color: #d0d0d0;
-    font-weight: 600;
-    text-transform: uppercase;
+    /* color: #d0d0d0; */
+    font-weight: 500;
     pointer-events: none;
 
     @media (max-width: 768px) {
@@ -81,35 +79,23 @@ const handleClick = () => {
       animation: selected 1s forwards;
     }
 
-    &.excelente {
-      background-color: #86efac;
-      border-color: #22c55e;
-
+    /* &.excelente {
       label {
-        /* color: #22c55e; */
         color: #15803d;
       }
-    }
+    } 
 
     &.bom {
-      background-color: #fcd34d;
-      border-color: #f7b528;
-
       label {
-        /* color: #f7b528; */
         color: #f59e0b;
       }
     }
 
     &.ruim {
-      background-color: #fca5a5;
-      border-color: #f53e3e;
-
       label {
-        /* color: #f53e3e; */
         color: #dc2626;
       }
-    }
+    } */
   }
 }
 

@@ -122,3 +122,41 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.emoticon-button {
+  @apply ring-gray-200 dark:ring-gray-800;
+}
+
+.emoticon-button label {
+  @apply text-gray-300 dark:text-gray-700;
+}
+
+.excelente.active {
+  @apply ring-green-200  bg-green-400;
+}
+
+.excelente.active label {
+  @apply text-green-200;
+}
+
+.bom.active {
+  @apply ring-amber-200  bg-amber-400;
+  @apply text-amber-600;
+}
+
+.bom.active label {
+  @apply text-amber-200;
+}
+
+.ruim.active {
+  @apply ring-red-200  bg-red-400;
+  @apply text-red-600;
+}
+
+.ruim.active label {
+  @apply text-red-200;
+}

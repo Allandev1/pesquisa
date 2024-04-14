@@ -1,5 +1,5 @@
 <template>
-  <main class="flex justify-between w-full gap-2">
+  <main class="flex justify-between w-full gap-2 mt-2">
     <EmoticonFace
       v-for="emoticon in emoticonOptions"
       :key="emoticon.key"

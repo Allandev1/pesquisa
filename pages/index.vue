@@ -1,5 +1,5 @@
 <template>
-  <main class="container max-w-2xl p-4">
+  <main class="container max-w-2xl p-3">
     <UCard v-if="etapa1">
       <template #header>
         <img
@@ -200,9 +200,9 @@
 <script setup>
 import { z } from "zod";
 
-definePageMeta({
-  colorMode: "ligth",
-});
+// definePageMeta({
+//   colorMode: "ligth",
+// });
 
 const config = useRuntimeConfig();
 const etapa1 = ref(true);
