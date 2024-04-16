@@ -110,25 +110,15 @@
           required
         >
           <URadioGroup
-            class="hidden"
             v-model="formData.instalacoes"
             :options="avaliacaoOptions"
-          />
-          <EmoticonSection
-            :formCondition="formData.instalacoes"
-            @update:formCondition="formData.instalacoes = $event"
           />
         </UFormGroup>
 
         <UFormGroup name="recepcao" label="Trabalho da Recepção:" required>
           <URadioGroup
-            class="hidden"
             v-model="formData.recepcao"
             :options="avaliacaoOptions"
-          />
-          <EmoticonSection
-            :formCondition="formData.recepcao"
-            @update:formCondition="formData.recepcao = $event"
           />
         </UFormGroup>
 
@@ -138,13 +128,8 @@
           required
         >
           <URadioGroup
-            class="hidden"
             v-model="formData.saude"
             :options="avaliacaoOptions"
-          />
-          <EmoticonSection
-            :formCondition="formData.saude"
-            @update:formCondition="formData.saude = $event"
           />
         </UFormGroup>
 
@@ -154,13 +139,8 @@
           required
         >
           <URadioGroup
-            class="hidden"
             v-model="formData.limpeza"
             :options="avaliacaoOptions"
-          />
-          <EmoticonSection
-            :formCondition="formData.limpeza"
-            @update:formCondition="formData.limpeza = $event"
           />
         </UFormGroup>
 
@@ -170,13 +150,8 @@
           required
         >
           <URadioGroup
-            class="hidden"
             v-model="formData.fluxo"
             :options="avaliacaoOptions"
-          />
-          <EmoticonSection
-            :formCondition="formData.fluxo"
-            @update:formCondition="formData.fluxo = $event"
           />
         </UFormGroup>
 
@@ -186,13 +161,8 @@
           required
         >
           <URadioGroup
-            class="hidden"
             v-model="formData.tratamento"
             :options="avaliacaoOptions"
-          />
-          <EmoticonSection
-            :formCondition="formData.tratamento"
-            @update:formCondition="formData.tratamento = $event"
           />
         </UFormGroup>
 
